@@ -1,7 +1,7 @@
 #include <sys/wait.h>
 #include "apue.h"
 
-static void sig_int(int)''
+static void sig_int(int);
 
 int main()
 {
@@ -9,6 +9,7 @@ int main()
     pid_t pid;
     int status;
 
+// Register the signal handler
     if(signal(SIGINT, sig_int) == SIG_ERR)
         err_sys("signal error");
 
@@ -32,7 +33,10 @@ int main()
     exit(0);
 }
 
+// signal handler
 void sig_int(int signo)
 {
-    printf("interrupt\n%% ");
+    if (signo == SIGINT)
+        printf("receive a SIGINT interrupt %% ");
+    
 }
