@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
         printf("read access OK\n");
     if (open(argv[1], O_RDONLY) < 0)
         err_ret("open error for %s", argv[1]);
-    else 
+    else
         printf("open for reading OK\n");
     exit(0);
 }
