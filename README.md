@@ -9,3 +9,5 @@ add #include "error.c" before #endif in the header file
 ## For Unix/Linux
 Please google it XD
 
+## License
+GNU General Public License v3.0
