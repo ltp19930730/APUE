@@ -2,6 +2,7 @@
 #ifdef SOLARIS
 #include <sys/mkdev.h>
 #endif
+#include <sys/sysmacros.h>
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
             continue;
         }
 
-//        printf("dev = %d/%d", major(buf.st_dev), minor(buf.st_dev));
+        printf("dev = %d/%d", major(buf.st_dev), minor(buf.st_dev));
         if (S_ISCHR(buf.st_mode) || S_ISBLK(buf.st_mode)) {
             printf(" (%s) rdev = %d/%d",
                     (S_ISCHR(buf.st_mode)) ? "character" : " block", 
