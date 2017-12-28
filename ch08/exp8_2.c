@@ -1,3 +1,8 @@
+/*
+ * gcc -D_DEFAULT_SOURCE exp8_2.c -o test 
+ *
+ */
+
 #include "apue.h"
 #include <sys/wait.h>
 
