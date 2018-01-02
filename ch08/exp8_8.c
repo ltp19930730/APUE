@@ -45,7 +45,7 @@ main(int argc, char *argv[])
     if (argc == 2)
         adj = strtol(argv[1], NULL, 10);
     gettimeofday(&end, NULL);
-    end.tv_sec += 10;
+    end.tv_sec += 10;	/*run for 10 seconds */
 
     if ((pid = fork()) < 0) {
         err_sys("fork failed");
