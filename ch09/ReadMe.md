@@ -15,7 +15,8 @@ But in the network login, the parent process of **shell** is process **inetd**, 
 > Write a small program that calls fork and has the child create a new session. Verify that the child becomes a process group leader and that the child no longer has a controlling terminal.
 
 [Code](https://github.com/ltp19930730/APUE/blob/master/ch09/exercise/9_2.c) After we run the program, we got the answer:
-'''parent: pid = 11680, ppid = 8747, pgrp = 11680, tgprp = 11680, sid = 8747
+```
+parent: pid = 11680, ppid = 8747, pgrp = 11680, tgprp = 11680, sid = 8747
 child: pid = 11681, ppid = 11680, pgrp = 11681, tgprp = -1, sid = 11681
-'''
+```
 From the result, we could find the pgrp id and session id is 11681 and tgprp is -1. This is the process group ID of the foreground process group on the terminal associated to STDIN, which must be the controlling terminal of the calling process. -1 means that the child no long has a controlling terminal.
