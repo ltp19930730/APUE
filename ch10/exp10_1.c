@@ -1,16 +1,21 @@
-#include "apue.h"
+#include <stdio.h>
+#include <signal.h>
+#include <error.h>
+#include <unistd.h>
 
+// defined in apue.h cannot include apue.h
 static void sig_usr(int); /* one handler for both signal */
 
 int main()
 {
     if (signal(SIGUSR1,sig_usr) == SIG_ERR)
-        err_sys("can't catch SIGUSR1");
+        perror("can't catch SIGUSR1");
     if (signal(SIGUSR2,sig_usr) == SIG_ERR)
-        err_sys("can't catch SIGUSR2");
+        perror("can't catch SIGUSR2");
     for ( ; ; )
         pause();
 }
+
 
 static void
 sig_usr(int signo)
@@ -20,5 +25,6 @@ sig_usr(int signo)
     else if (signo == SIGUSR2)
         printf("received SIGUSR2\n");
     else
-        err_dump("recevied signal %d\n", signo);
+        perror("recevied signal error");
 }
+
