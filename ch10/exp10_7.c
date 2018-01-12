@@ -23,5 +23,6 @@ main(void)
 static void
 sig_alrm(int signo)
 {
+	printf("time out for reading\n");
 	/* nothing to do, just return to interrupt the read */
 }
