@@ -1,5 +1,8 @@
 #include "apue.h"
-
+/*
+    the correct way to protect a critical region of code
+    from a specific signal.
+ */
 static void sig_int(int);
 
 int main(void)
@@ -13,4 +16,26 @@ int main(void)
     sigemptyset(&waitmask);
     sigaddset(&waitmask, SIGUSR1);
     sigemptyset(&newmask);
+    sigaddset(&newmask, SIGINT);
+
+    if (sigprocmask(SIG_BLOCK, &newmask, &oldmask) < 0)
+        err_sys("SIG_BLOCK error");
+
+    pr_mask("in critical region: ");
+    // pause
+    if (sigsuspend(&waitmask) != -1)
+        err_sys("sigsuspend error");
+
+    pr_mask("after return from sigsuspend: ");
+
+    if (sigprocmask(SIG_SETMASK, &oldmask, NULL) < 0)
+        err_sys("SIG_SETMASK error");
+
+    pr_mask("program exit: ");
+    exit(0);
+}
+
+static void
+sig_int(int signo){
+    pr_mask("\nin sig_int: ");
 }
