@@ -33,7 +33,7 @@ main(void)
 		for(i = 0; i < NLOOPS; i += 2) {
 			if ((counter = update((long *)area)) != i)
 				err_quit("parent: expected %d, got %d", i, counter);
-			TELL_CHILED(pid);
+			TELL_CHILD(pid);
 			WAIT_CHILD();
 		}
 	} else {
