@@ -1,5 +1,5 @@
 ### Makefile:
-'''
+```
 CC=gcc
 CFLAGS =-Wall
 objects_c = client.o csopen.o recv_fd.o
@@ -24,5 +24,5 @@ clean :
 	rm opend $(objects_s)
 	rm $(share)
 
-'''
-After make file, ./client to run the client.
+```
+### After make file, ./client to run the client.
