@@ -1,4 +1,5 @@
 #include "open.h"
+#include <sys/socket.h>
 #include <sys/uio.h>
 
 int fd_pipe(int fd[2]) {
@@ -28,7 +29,7 @@ int csopen(char *name, int oflag) {
 			if (fd[1] != STDOUT_FILENO &&
 				dup2(fd[1], STDOUT_FILENO) != STDOUT_FILENO)
 				err_sys("dup2 error to stdout");
-			if (exec("./opend", "opend", (char *)0) < 0)
+			if (execl("./opend", "opend", (char *)0) < 0)
 				err_sys("execl error");
 		}
 		close(fd[1]); /* parent */
