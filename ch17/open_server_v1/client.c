@@ -14,9 +14,10 @@ int main(int argc, char *argv[]){
 			line[strlen(line) - 1] = 0; /* replace newline with null */
 
 		/* open the file */
+		printf("input : %s\n", line);
 		if ((fd = csopen(line, O_RDONLY)) < 0)
 			continue;
-
+        printf("get fd %d from server\n", fd);
 		/* and cat to stdout */
 		while (( n = read(fd, buf, BUFFSIZE)) > 0)
 			if (write(STDOUT_FILENO, buf, n) != n)

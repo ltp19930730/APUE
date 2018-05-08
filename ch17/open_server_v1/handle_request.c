@@ -37,8 +37,8 @@ int buf_args(char *buf, int (*optfunc)(int, char **)){
 	argv[argc = 0] = buf;
 	while ((ptr = strtok(NULL, WHITE)) != NULL) {
 		if (++argc >= MAXARGC-1)
-			retunr -1;
-		argc[argc] = ptr;
+			return -1;
+		argv[argc] = ptr;
 	}
 	argv[++argc] = NULL;
 
