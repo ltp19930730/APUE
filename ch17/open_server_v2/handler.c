@@ -1,7 +1,7 @@
 #include "opend.h"
 #include <fcntl.h>
 
-void handler_request(char *buf, int nread, int clifd, uid_t uid)
+void handle_request(char *buf, int nread, int clifd, uid_t uid)
 {
 	int newfd;
 
@@ -20,6 +20,13 @@ void handler_request(char *buf, int nread, int clifd, uid_t uid)
 		return;
 	}
 
+	if ((newfd = open(pathname, oflag)) < 0) {
+		snprintf(errmsg, MAXLINE-1, "can't open %s: %s\n",
+				pathname, strerror(errno));
+		send_err(clifd, -1, errmsg);
+		log_msg(errmsg);
+		return;
+	}
 	/* send the descriptor */
 	if (send_fd(clifd, newfd) < 0)
 		log_sys("send_fd error");

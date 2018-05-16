@@ -1,4 +1,6 @@
 #include "opend.h"
+#include "apue.h"
+
 #include <sys/select.h>
 
 void loop(void) {

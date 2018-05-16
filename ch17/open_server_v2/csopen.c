@@ -14,7 +14,7 @@ int csopen(char *name, int oflag)
 	static int csfd = -1;
 
 	if (csfd < 0) { /* open connection to conn server */
-		if (csfd = cli_conn(CS_OPEN)) < 0) {
+		if ((csfd = cli_conn(CS_OPEN)) < 0) {
 			err_ret("cli_conn error");
 			return -1;
 		}

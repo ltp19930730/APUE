@@ -28,7 +28,7 @@ serv_accept(int listenfd, uid_t *uidptr)
     len -= offsetof(struct sockaddr_un, sun_path); /*len of pathname */
     memcpy(name, un.sun_path, len);
     name[len] = 0;
-    if (stat(name, &stabuf) < 0) {
+    if (stat(name, &statbuf) < 0) {
         rval = -3;
         goto errout;
     }
@@ -60,7 +60,7 @@ serv_accept(int listenfd, uid_t *uidptr)
     return clifd;
 
 errout:
-    err = errno
+    err = errno;
     close(clifd);
     free(name);
     errno = err;

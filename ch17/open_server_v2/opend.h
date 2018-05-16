@@ -1,5 +1,6 @@
 #include "apue.h"
 #include <errno.h>
+#include <syslog.h>
 
 #define CS_OPEN "/tmp/opend.socket" /* well-know name */
 #define CL_OPEN "open" /* client's request for server */

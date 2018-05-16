@@ -1,5 +1,4 @@
 #include "opend.h"
-#include <syslog.h>
 
 int debug, oflag, client_size, log_to_stderr;
 char errmsg[MAXLINE];
