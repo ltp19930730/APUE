@@ -32,7 +32,7 @@ int send_fd(int fd, int fd_to_send) {
 		if (cmptr == NULL && (cmptr = malloc(CONTROLLEN)) == NULL)
 			return -1;
 		cmptr->cmsg_level = SOL_SOCKET;
-		cmptr->cmsg_type = SCM_RIGHS;
+		cmptr->cmsg_type = SCM_RIGHTS;
 		cmptr->cmsg_len = CONTROLLEN;
 		msg.msg_control = cmptr;
 		msg.msg_controllen = CONTROLLEN;

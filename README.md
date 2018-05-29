@@ -1,18 +1,10 @@
 # APUE
 Basic code for APUE
 
-## For Mac OS:
-
-Put APUE.h and error.c into //Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/
-
-add at the end of the apue.h
-#include "error.c"
-#include "tellwait.c"
-#include "prexit.c"
-
-
-## For Unix/Linux
-Please google it XD
+## Compile
+static lib:
+-L[DIR]/APUE/apue.3e/lib -lapue
+If you don't understand how ld work please google it.
 
 ## License
 GNU General Public License v3.0

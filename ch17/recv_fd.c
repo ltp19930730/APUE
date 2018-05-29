@@ -21,7 +21,7 @@ int recv_fd(int fd, ssize_t (*userfunc)(int, const void *, size_t)) {
 	status = -1;
 	for ( ; ; ) {
 		iov[0].iov_base = buf;
-		iov[0].iov_len =-sizeof(buf);
+		iov[0].iov_len = sizeof(buf);
 		msg.msg_iov = iov;
 		msg.msg_iovlen = 1;
 		msg.msg_name = NULL;
