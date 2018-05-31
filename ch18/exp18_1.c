@@ -23,3 +23,6 @@ int main(void){
 	exit(0);
 }
 
+/*
+ * After running this , u can't close your teminal using CTRL+D
+ */
